@@ -1,0 +1,9 @@
+language: node_js
+node_js:
+  - "5"
+install:
+  - npm install -g elm
+  - elm-package install -y
+  - pushd tests && elm-package install -y && popd
+script:
+  - cd tests && elm-make Tests.elm --output tests.js && node tests.js
